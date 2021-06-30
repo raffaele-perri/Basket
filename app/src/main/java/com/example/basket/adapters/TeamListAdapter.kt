@@ -27,6 +27,10 @@ class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.TeamViewHolder>(){
         holder.bind(teamList[position])
     }
 
+    override fun getItemCount(): Int {
+        return teamList.size
+    }
+
     inner class TeamViewHolder (private val binding: TeamItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(team : Team){
             binding.apply {
@@ -40,7 +44,4 @@ class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.TeamViewHolder>(){
         }
     }
 
-    override fun getItemCount(): Int {
-        return teamList.size
-    }
 }

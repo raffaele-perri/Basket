@@ -28,7 +28,7 @@ class NetworkDataSource @Inject constructor(private val basketApi: IBasketAPI): 
             val response = basketApi.getPlayers()
             if (response.isSuccessful) {
                 Log.d("RESPONSE", "onResponse: ${response.body()!!}")
-                response.body()
+                response.body()?.data
             } else
                 emptyList()
         } catch (e: Exception) {

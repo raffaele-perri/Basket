@@ -11,5 +11,5 @@ interface IBasketAPI {
     @GET("teams")
     suspend fun getTeams() : Response<APITeamData>
     @GET("players")
-    suspend fun getPlayers() : Response<List<Player>>
+    suspend fun getPlayers() : Response<APIPlayerData>
 }
