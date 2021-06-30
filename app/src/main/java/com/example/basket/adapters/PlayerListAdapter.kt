@@ -6,11 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_domain.models.Player
 import com.example.basket.databinding.PlayerItemBinding
-import com.example.basket.databinding.TeamItemBinding
 
 class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.PlayerViewHolder>(){
     private lateinit var context: Context
-    // var listener: ((team : Team) -> Unit)? = null
+     var listener: ((player : Player) -> Unit)? = null
     var playerList: List<Player> = listOf()
         set(value){
             field = value
@@ -38,9 +37,9 @@ class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.PlayerViewHolde
                 textViewLastName.text = player.lastName
                 textViewFirstName.text = player.firstName
                 //Glide.with(context).load(beer.imageUrl).into(imageViewBeer)
-                /* root.setOnClickListener{
-                     listener?.invoke(team)
-                 }*/
+                 root.setOnClickListener{
+                     listener?.invoke(player)
+                 }
             }
         }
     }

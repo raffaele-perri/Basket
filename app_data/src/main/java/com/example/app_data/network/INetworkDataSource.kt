@@ -7,4 +7,5 @@ interface INetworkDataSource {
 
     suspend fun getTeams(): List<Team>
     suspend fun getPlayers(): List<Player>
+    suspend fun getPlayerById(id: Int): Player
 }

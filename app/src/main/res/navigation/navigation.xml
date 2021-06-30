@@ -27,5 +27,9 @@
         android:id="@+id/detailFragment"
         android:name="com.example.basket.fragments.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="player_id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

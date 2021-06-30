@@ -6,7 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -69,10 +73,10 @@ class PlayersFragment : Fragment() {
 
         recycler = binding.recyclerView
         adapter = PlayerListAdapter()
-//        adapter?.listener ={ beer->
-//            val action = ListFragmentDirections.actionListFragmentToDetailFragment(beer.id)
-//            findNavController().navigate(action)
-//        }
+        adapter?.listener ={ player->
+            val action = PlayersFragmentDirections.actionPlayersFragmentToDetailFragment(player.id)
+            findNavController().navigate(action)
+        }
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
 
@@ -82,6 +86,10 @@ class PlayersFragment : Fragment() {
         })
 
         model.loadPlayers()
+
+        binding.searchBar.doAfterTextChanged {
+            adapter?.playerList = model.filterPlayers(binding.searchBar.text.toString())!!
+        }
     }
 
     companion object {

@@ -1,11 +1,23 @@
 package com.example.basket.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.app_domain.models.Player
 import com.example.basket.R
+import com.example.basket.adapters.PlayerListAdapter
+import com.example.basket.databinding.FragmentDetailBinding
+import com.example.basket.databinding.FragmentPlayersBinding
+import com.example.basket.viewModels.DetailViewModel
+import com.example.basket.viewModels.PlayersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +36,11 @@ class DetailFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private val model: DetailViewModel by viewModels()
+    private var _binding : FragmentDetailBinding? = null
+    private val binding get() = _binding!!
+    private val args: DetailFragmentArgs by navArgs()
+    private lateinit var playerDetail: Player
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,7 +54,35 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        model.getPlayer().observe(viewLifecycleOwner, { player ->
+            loadSpecs(player)
+            Log.d("TEAM", "team -> :  ${player.lastName}")
+        })
+
+        model.loadPlayer(args.playerId)
+    }
+
+    private fun loadSpecs(player: Player){
+        binding.textViewDetailFirstName.text = player.firstName
+        binding.textViewDetailHeight.text = player.height_feet.toString()
+        binding.textViewDetailID.text = player.id.toString()
+        binding.textViewDetailLastName.text = player.lastName
+        binding.textViewDetailPosition.text = player.position
+        binding.textViewDetailTeam.text = "${player.team.name} ${player.team.city}"
+
+        binding.textViewDetailWeight.text = player.weightPounds.toString()
     }
 
     companion object {

@@ -17,8 +17,8 @@ class BasketRepository @Inject constructor(private val networkDataSource: INetwo
         return networkDataSource.getPlayers()
     }
 
-    override suspend fun getPlayers(query: String): List<Player> {
-        TODO("Not yet implemented")
+    override suspend fun getPlayerById(id:Int): Player {
+        return networkDataSource.getPlayerById(id)
     }
 }
 

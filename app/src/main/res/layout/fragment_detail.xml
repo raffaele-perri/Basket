@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="detail" />
+    <ImageView
+        android:id="@+id/imageViewDetailPlayer"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/basketball"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textViewDetailLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewDetailPlayer"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDetailPlayer"
+        app:layout_constraintTop_toTopOf="@+id/imageViewDetailPlayer" />
+
+    <TextView
+        android:id="@+id/textViewDetailFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDetailLastName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetailLastName" />
+
+    <TextView
+        android:id="@+id/textViewDetailID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewDetailLastName"
+        app:layout_constraintTop_toTopOf="@+id/textViewDetailLastName" />
+
+    <ImageView
+        android:id="@+id/imageViewDetailTeam"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/sport"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDetailPlayer"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDetailPlayer" />
+
+    <TextView
+        android:id="@+id/textViewDetailTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewDetailTeam"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDetailTeam"
+        app:layout_constraintTop_toTopOf="@+id/imageViewDetailTeam" />
+
+    <TextView
+        android:id="@+id/labelPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Position"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageViewDetailPlayer"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDetailTeam" />
+
+    <TextView
+        android:id="@+id/textViewDetailPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/labelPosition"
+        app:layout_constraintTop_toBottomOf="@+id/labelPosition" />
+
+    <TextView
+        android:id="@+id/labelHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Height"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textViewDetailPosition"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetailPosition" />
+
+    <TextView
+        android:id="@+id/textViewDetailHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/labelHeight"
+        app:layout_constraintTop_toBottomOf="@+id/labelHeight" />
+
+    <TextView
+        android:id="@+id/textViewDetailWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/labelWeight"
+        app:layout_constraintTop_toBottomOf="@+id/labelWeight" />
+
+    <TextView
+        android:id="@+id/labelWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Weight"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textViewDetailHeight"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetailHeight" />
+</androidx.constraintlayout.widget.ConstraintLayout>

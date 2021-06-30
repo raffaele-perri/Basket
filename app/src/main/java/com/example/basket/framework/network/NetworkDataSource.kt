@@ -36,4 +36,19 @@ class NetworkDataSource @Inject constructor(private val basketApi: IBasketAPI): 
             emptyList()
         }!!
     }
+
+    override suspend fun getPlayerById(id: Int): Player {
+        return try {
+            val response = basketApi.getPlayerById(id)
+            if (response.isSuccessful) {
+                Log.d("RESPONSE", "onResponse: ${response.body()!!}")
+                response.body()
+            } else
+                Player(0,"",0,0,"","",0,Team(0,"","","","","",""))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Player(0,"",0,0,"","",0,Team(0,"","","","","",""))
+        }!!
+    }
+
 }

@@ -16,7 +16,6 @@ class PlayersViewModel @Inject constructor(private val basketRepository: IBasket
     ViewModel() {
 
     private val players: MutableLiveData<List<Player>> = MutableLiveData<List<Player>>()
-
     fun getPlayers(): LiveData<List<Player>> {
         return players
     }
@@ -26,4 +25,12 @@ class PlayersViewModel @Inject constructor(private val basketRepository: IBasket
             players.postValue(basketRepository.getPlayers())
         }
     }
+
+    fun filterPlayers(query: String): List<Player>? {
+        return players.value?.filter {
+            it.lastName.toUpperCase().contains(query.toUpperCase())
+                    || it.firstName.toUpperCase().contains(query.toUpperCase())
+        }
+    }
+
 }
