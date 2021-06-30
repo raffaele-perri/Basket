@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/teamsFragment"
-        android:icon="@android:drawable/ic_lock_idle_low_battery"
+        android:icon="@drawable/shield"
         android:title="Teams" />
     <item
         android:id="@+id/playersFragment"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/group"
         android:title="Players" />
 </menu>

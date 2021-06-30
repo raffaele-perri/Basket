@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.basket.R
+import com.example.basket.adapters.TeamListAdapter
 import com.example.basket.databinding.FragmentTeamsBinding
 import com.example.basket.viewModels.TeamsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,9 +31,12 @@ class TeamsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var recycler: RecyclerView
     private val model: TeamsViewModel by viewModels()
     private var _binding : FragmentTeamsBinding? = null
     private val binding get() = _binding!!
+    private var adapter : TeamListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +63,18 @@ class TeamsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        recycler = binding.recyclerView
+        adapter = TeamListAdapter()
+//        adapter?.listener ={ beer->
+//            val action = ListFragmentDirections.actionListFragmentToDetailFragment(beer.id)
+//            findNavController().navigate(action)
+//        }
+        recycler.layoutManager = GridLayoutManager(requireContext(),2)
+        recycler.adapter = adapter
+
         model.getTeams().observe(viewLifecycleOwner, { teams ->
             teams.map { team ->  Log.d("TEAM", "team -> :  ${team.city}") }
+            adapter?.teamList = teams
         })
 
         model.loadTeams()
