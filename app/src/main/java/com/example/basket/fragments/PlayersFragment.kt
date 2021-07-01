@@ -1,29 +1,18 @@
 package com.example.basket.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.app_domain.models.Player
-import com.example.basket.R
 import com.example.basket.adapters.PlayerListAdapter
-import com.example.basket.adapters.TeamListAdapter
 import com.example.basket.databinding.FragmentPlayersBinding
-import com.example.basket.databinding.FragmentTeamsBinding
 import com.example.basket.viewModels.PlayersViewModel
-import com.example.basket.viewModels.TeamsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
@@ -64,7 +53,7 @@ class PlayersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentPlayersBinding.inflate(inflater, container, false)
         return binding.root

@@ -9,7 +9,6 @@ import com.example.basket.databinding.TeamItemBinding
 
 class TeamListAdapter : RecyclerView.Adapter<TeamListAdapter.TeamViewHolder>(){
     private lateinit var context: Context
-   // var listener: ((team : Team) -> Unit)? = null
     var teamList: List<Team> = listOf()
         set(value){
             field = value

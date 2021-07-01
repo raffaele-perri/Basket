@@ -4,9 +4,9 @@
     <item
         android:id="@+id/teamsFragment"
         android:icon="@drawable/shield"
-        android:title="Teams" />
+        android:title="@string/teams" />
     <item
         android:id="@+id/playersFragment"
         android:icon="@drawable/group"
-        android:title="Players" />
+        android:title="@string/players" />
 </menu>

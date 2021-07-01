@@ -3,7 +3,6 @@ package com.example.basket.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_domain.models.Player
 import com.example.basket.databinding.PlayerItemBinding

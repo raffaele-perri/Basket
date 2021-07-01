@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.app_domain.interfaces.IBasketRepository
-import com.example.app_domain.models.APIPlayerData
 import com.example.app_domain.models.Meta
 import com.example.app_domain.models.Player
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -52,11 +51,11 @@ class PlayersViewModel @Inject constructor(private val basketRepository: IBasket
         }
     }
 
-    fun filterPlayers(query: String): List<Player>? {
-        return players.value?.filter {
-            it.lastName.toUpperCase().contains(query.toUpperCase())
-                    || it.firstName.toUpperCase().contains(query.toUpperCase())
-        }
-    }
+//    fun filterPlayers(query: String): List<Player>? {
+//        return players.value?.filter {
+//            it.lastName.toUpperCase().contains(query.toUpperCase())
+//                    || it.firstName.toUpperCase().contains(query.toUpperCase())
+//        }
+//    }
 
 }
