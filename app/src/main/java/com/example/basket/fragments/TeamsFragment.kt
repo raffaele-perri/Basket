@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -73,6 +74,7 @@ class TeamsFragment : Fragment() {
         recycler.adapter = adapter
 
         model.getTeams().observe(viewLifecycleOwner, { teams ->
+            binding.progressBar.visibility = View.GONE
             teams.map { team ->  Log.d("TEAM", "team -> :  ${team.city}") }
             adapter?.teamList = teams
         })

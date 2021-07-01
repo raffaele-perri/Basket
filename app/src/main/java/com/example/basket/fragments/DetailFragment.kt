@@ -67,6 +67,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         model.getPlayer().observe(viewLifecycleOwner, { player ->
+            binding.progressBar.visibility = View.GONE
             loadSpecs(player)
             Log.d("TEAM", "team -> :  ${player.lastName}")
         })

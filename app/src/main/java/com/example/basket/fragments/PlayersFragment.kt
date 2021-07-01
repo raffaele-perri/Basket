@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
@@ -81,6 +82,7 @@ class PlayersFragment : Fragment() {
         recycler.adapter = adapter
 
         model.getPlayers().observe(viewLifecycleOwner, { players ->
+            binding.progressBar.visibility = View.GONE
             players.map { player ->  Log.d("TEAM", "team -> :  ${player.lastName}") }
             adapter?.playerList = players
         })
