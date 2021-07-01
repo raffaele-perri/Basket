@@ -1,12 +1,14 @@
 package com.example.app_domain.interfaces
 
+import com.example.app_domain.models.APIPlayerData
 import com.example.app_domain.models.Player
 import com.example.app_domain.models.Team
 
 interface IBasketRepository {
 
     suspend fun getTeams() : List<Team>
-    suspend fun getPlayers() : List<Player>
+    suspend fun getPlayers() : APIPlayerData
     suspend fun getPlayerById(id: Int) : Player
-
+    suspend fun getPlayers(page:Int,perPage:Int) : APIPlayerData
+    suspend fun getPlayers(page:Int,perPage:Int,search:String) : APIPlayerData
 }
