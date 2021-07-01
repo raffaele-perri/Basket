@@ -40,7 +40,6 @@ class PlayersFragment : Fragment() {
     private var search: String = ""
     private var page = 1
     private var isLoading = false
-    private var isSearching = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,11 +96,9 @@ class PlayersFragment : Fragment() {
                 return isLoading
             }
 
-            override fun isSearching(): Boolean {
-                return isSearching
-            }
-
         })
+
+
         model.getPlayers().observe(viewLifecycleOwner, { players ->
             notLoading()
 //            Log.e("TEXT", "OBSERVE ", )
@@ -158,7 +155,7 @@ class PlayersFragment : Fragment() {
             val totalItemCount = layoutManager.itemCount
             val firstVisibleItemPos = layoutManager.findFirstVisibleItemPosition()
 
-            if(!isLastPage() && !isLoading() && !isSearching()){
+            if(!isLastPage() && !isLoading()){
                 if((visibleItemCount + firstVisibleItemPos) >= totalItemCount && firstVisibleItemPos >= 0)
                     loadMoreItems()
 
@@ -170,7 +167,5 @@ class PlayersFragment : Fragment() {
         abstract fun isLastPage(): Boolean
 
         abstract fun isLoading(): Boolean
-
-        abstract fun isSearching(): Boolean
     }
 }

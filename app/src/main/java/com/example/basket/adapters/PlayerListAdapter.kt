@@ -51,7 +51,6 @@ class PlayerListAdapter : RecyclerView.Adapter<PlayerListAdapter.PlayerViewHolde
             binding.apply {
                 textViewLastName.text = player.lastName
                 textViewFirstName.text = player.firstName
-                //Glide.with(context).load(beer.imageUrl).into(imageViewBeer)
                 root.setOnClickListener{
                     listener?.invoke(player)
                 }
